@@ -3,15 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Status</title>
+    <title>KAVACH DEPLOYMENT STATUS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            padding: 20px;
+            margin: 0;
+        }
+        .tabs {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .tabs button {
+            background-color: #333;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            color: white;
+            font-size: 17px;
+        }
+        .tabs button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .tabs button.active {
+            background-color: #ccc;
+            color: black;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: none;
+        }
+        .tab-content img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Project Status</h1>
-    <div>
-        <!-- List your images here -->
-        <img src="ST-BRC status.png" alt="Project Status 1">
-        <img src="ST-BRC status.png" alt="Project Status 2">
-        <!-- Add more images as needed -->
-    </div>
+
+<h1>KAVACH DEPLOYMENT STATUS</h1>
+
+<div class="tabs">
+    <button class="tab-link" onclick="openTab(event, 'WR')">WR</button>
+    <button class="tab-link" onclick="openTab(event, 'WCR')">WCR</button>
+    <button class="tab-link" onclick="openTab(event, 'NCR')">NCR</button>
+    <button class="tab-link" onclick="openTab(event, 'ECR')">ECR</button>
+</div>
+
+<div id="WR" class="tab-content">
+    <h2>Western Region</h2>
+    <img src="wr_image1.jpg" alt="WR Status 1">
+    <img src="wr_image2.jpg" alt="WR Status 2">
+</div>
+
+<div id="WCR" class="tab-content">
+    <h2>West Central Region</h2>
+    <img src="wcr_image1.jpg" alt="WCR Status 1">
+    <img src="wcr_image2.jpg" alt="WCR Status 2">
+</div>
+
+<div id="NCR" class="tab-content">
+    <h2>North Central Region</h2>
+    <img src="ncr_image1.jpg" alt="NCR Status 1">
+    <img src="ncr_image2.jpg" alt="NCR Status 2">
+</div>
+
+<div id="ECR" class="tab-content">
+    <h2>East Central Region</h2>
+    <img src="ecr_image1.jpg" alt="ECR Status 1">
+    <img src="ecr_image2.jpg" alt="ECR Status 2">
+</div>
+
+<script>
+    function openTab(evt, region) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(region).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    
+    // Open the first tab by default
+    document.getElementsByClassName("tab-link")[0].click();
+</script>
+
 </body>
 </html>
