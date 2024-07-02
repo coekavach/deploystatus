@@ -172,7 +172,7 @@
     let score = 0;
     let questions = [];
 
-    fetch('/mnt/data/questions.csv')
+    fetch('questions.csv')
         .then(response => response.text())
         .then(data => {
             questions = parseCSV(data);
