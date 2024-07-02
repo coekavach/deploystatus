@@ -172,7 +172,7 @@
     let score = 0;
     let questions = [];
 
-    fetch('questions.csv')
+    fetch('/mnt/data/questions.csv')
         .then(response => response.text())
         .then(data => {
             questions = parseCSV(data);
@@ -188,7 +188,7 @@
             result.push({
                 question: line[0],
                 options: [line[1], line[2], line[3], line[4]],
-                correctOption: parseInt(line[5])
+                correctOption: line[5].trim() // Correct option as text
             });
         }
         return result.slice(0, 10); // Only take the first 10 questions
@@ -215,8 +215,8 @@
             return;
         }
 
-        const selectedAnswerIndex = parseInt(selectedOption.id.replace('option', '')) - 1;
-        if (selectedAnswerIndex === questions[currentQuestionIndex].correctOption - 1) {
+        const selectedAnswerText = document.querySelector(`label[for=${selectedOption.id}]`).textContent.trim();
+        if (selectedAnswerText === questions[currentQuestionIndex].correctOption) {
             score++;
         }
 
